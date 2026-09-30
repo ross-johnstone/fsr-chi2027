@@ -202,7 +202,8 @@
 
   function resize() {
     DPR = Math.min(devicePixelRatio || 1, 2);
-    W = innerWidth; H = innerHeight;
+    W = Math.max(1, innerWidth || document.documentElement.clientWidth);
+    H = Math.max(1, innerHeight || document.documentElement.clientHeight);
     canvas.width = W * DPR; canvas.height = H * DPR;
     const fw = Math.ceil(W / RES), fh = Math.ceil(H / RES);
     A = makeField(fw, fh); B = makeField(fw, fh);
